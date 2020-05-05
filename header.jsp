@@ -6,14 +6,24 @@
 <meta charset="UTF-8">
 <title></title>
 <style type="text/css">
-	.headerImg {
-	text-align: center;
-	}
-
 	.topbtn1 {
-	text-align: right;
-	margin-right: 5px;
+	margin-left: 10px;
 	margin-top: 10px;
+	float: left;'
+	}
+	
+	.topbtn2 {
+	margin-right: 10px;
+	margin-top: 10px;
+	float: right;'
+	}
+	
+	.headerImg {
+	margin: 0 auto;
+	text-align: center;
+	left: 50%;
+	margin-left: -130px;
+	padding: 10px;
 	}
 
 	ul {
@@ -61,7 +71,7 @@
     border-radius: 30px;
     padding: 10px;
     position: absolute;
-    top: 345px;
+    top: 327px;
     right: 20px;
     }
 
@@ -96,7 +106,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color:white;
+    color: black;
     text-decoration:none;
     }
 
@@ -153,15 +163,21 @@ function closeNav() {
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
-	<div class="topbtn1">
-		<input type="button" value="로그인">
-		<input type="button" value="회원가입">
-		<input type="button" value="마이페이지">
-		<input type="button" value="장바구니" onclick="location.href='cart.jsp'">
-		<input type="button" value="고객센터">
-	</div>
-	<div class="headerImg">
-		<a href="main.jsp" class="link_main"><img src="logo_transparent.png" height=300px width=300px/></a>
+	<div class="top-menu">
+		<div class="topbtn1">
+			<input type="button" value="HOME">
+			<input type="button" value="후기">
+			<input type="button" value="Q&A">
+		</div>
+		<div class="topbtn2">
+			<input type="button" value="로그인">
+			<input type="button" value="회원가입">
+			<input type="button" value="마이페이지">
+			<input type="button" value="장바구니" onclick="location.href='cart.jsp'">
+		</div>
+		<div class="headerImg">
+			<a href="main.jsp" class="link_main"><img src="logo_transparent.png" height=300px width=300px/></a>
+		</div>
 	</div>
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -184,20 +200,6 @@ function closeNav() {
 		<a href="#">종교</a>
 		<a href="#">컴퓨터/IT</a>
 	</div>
-	<nav id="topbtn2">
-		<ul>
-			<li><a href="#">베스트셀러</a></li>
-			<li>|</li>
-			<li><a href="#">국내도서</a></li>
-			<li>|</li>
-			<li><a href="#">외국도서</a></li>
-			<li>|</li>
-			<li><a href="#">후기</a></li>
-			<li>|</li>
-			<li><a href="#">Q&A</a></li>
-		</ul>
-	</nav>
-
 	<span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776; 전체 카테고리</span>
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
