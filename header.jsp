@@ -27,10 +27,10 @@
 	}
 
 	ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #333;
 	}
 	
 	ul:after{
@@ -60,20 +60,20 @@
 	}
 	
 	body {
-    font-family: "Lato", sans-serif;
+	font-family: "Lato", sans-serif;
 	}
 	
 	.searchbar{
-    margin-bottom: auto;
-    margin-top: auto;
-    height: 40px;
-    background-color: transparent;
-    border-radius: 30px;
-    padding: 10px;
-    position: absolute;
-    top: 327px;
-    right: 20px;
-    }
+	margin-bottom: auto;
+	margin-top: auto;
+	height: 40px;
+	background-color: transparent;
+	border-radius: 30px;
+	padding: 10px;
+	position: absolute;
+	top: 327px;
+	right: 20px;
+	}
 
     .search_input{
     color: white;
@@ -132,15 +132,15 @@
 	}
 
 	.sidenav a:hover {
-    color: #f1f1f1;
+	color: #f1f1f1;
 	}
 
 	.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
 	}
 
 	@media screen and (max-height: 450px) {
