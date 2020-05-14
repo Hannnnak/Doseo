@@ -35,7 +35,6 @@
 		text-align:center;
 		float:left;
 		width:34%;
-		
 	}
 	
 	.one {
@@ -56,7 +55,7 @@
 	}
 	
 	li {
-	floa	t: left;
+		float: left;
 	}
 	
 	li a {
