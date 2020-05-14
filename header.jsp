@@ -193,7 +193,7 @@ function closeNav() {
 			<input type="button" value="로그인">
 			<input type="button" value="회원가입">
 			<input type="button" value="마이페이지">
-			<input type="button" value="장바구니" onclick="location.href='carts.jsp'">
+			<input type="button" value="장바구니" onclick="location.href='cart.jsp'">
 		</div>
 	</div>
 	<div class="one">
