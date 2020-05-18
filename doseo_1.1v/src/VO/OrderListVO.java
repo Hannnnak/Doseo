@@ -1,4 +1,4 @@
-package vo;
+package VO;
 
 public class OrderListVO {
 	private int oNo;

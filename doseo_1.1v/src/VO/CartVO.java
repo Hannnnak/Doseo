@@ -1,4 +1,4 @@
-package vo;
+package VO;
 
 public class CartVO {
 	private int bNo;

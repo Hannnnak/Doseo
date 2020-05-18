@@ -85,18 +85,17 @@
 				<c:forEach var="product" items="${ product }" varStatus="status">
 					<tr>
 						<th>${ status.count }</th>
-						<td>${ product.title }</td>
-						<td>${ product.price }</td>
+						<td>${ product.pName }</td>
+						<td>${ product.pPrice }</td>
 						<td>${ product.dPrice}</td>
 						<td>${ product.quantity}</td>
-						<td>${ product.price * product.quantity }</td>
 					</tr>
 				</c:forEach>
 				</tbody>
 				<tfoot>
 					<tr>
 						<td colspan="4"></td>
-						<td>${ cart.totalPrice }</td>
+						<td>${ product.dPrice * product.quantity }</td>
 					</tr>
 				</tfoot>
 				<c:if test= "${ not empty sessionScope.quantity }">

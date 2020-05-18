@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import jdbc.JdbcUtil;
 import member.MODEL.Member;
+import member.MODEL.Member_mypage;
 
-public class MemberDAO {
+public class MemberDAO_mypage {
 	
 	
 	public Member selectById(Connection conn, String id) 
@@ -103,11 +104,11 @@ public class MemberDAO {
 
 
 
-	private Member convertMember(ResultSet rs) 
+	private Member_mypage convertMember(ResultSet rs) 
 	    throws SQLException{
 		System.out.println("MemberDAO의  convertMember()");
 		
-		return new Member(rs.getString("memberId"),
+		return new Member_mypage(rs.getString("memberId"),
 				rs.getString("memberPw"),
 				rs.getString("name"),
 				rs.getString("gender"),

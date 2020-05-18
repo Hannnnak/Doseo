@@ -1,4 +1,4 @@
-package member.command;
+package mypage.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import auth.service.User;
 import member.MODEL.Member;
-import member.service.MypageService;
+import mypage.service.MypageService;
 import mvc.command.CommandHandler;
 
 //이 클래스는  글상세보기 요청을 담당 컨트롤러

@@ -144,8 +144,8 @@
 				<c:forEach var="product" items="${ product }" varStatus="status">
 					<tr>
 						<th>${ status.count }</th>
-						<td>${ product.title }</td>
-						<td>${ product.price }</td>
+						<td>${ product.pname }</td>
+						<td>${ product.pPrice }</td>
 						<td>${ product.dPrice}</td>
 						<td>${ product.quantity}</td>
 						<td>${ product.price * product.quantity }</td>

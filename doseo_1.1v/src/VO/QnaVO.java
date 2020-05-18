@@ -1,4 +1,4 @@
-package vo;
+package VO;
 
 public class QnaVO {
 	private int qNo;
