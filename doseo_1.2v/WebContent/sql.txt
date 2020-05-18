@@ -1,0 +1,288 @@
+Q&A에서 &가 인식잘 안될거같아서 QnA로 바꾸고 조금씩 깔끔하게 수정햇습니다
+
+drop table addresslist;
+drop table doseo.cart;
+drop table doseo.member;
+drop table doseo.odetail;
+drop table doseo.orderlist;
+drop table doseo.product;
+drop table doseo.`q&a`;
+drop table doseo.review;
+
+
+-- 주문
+CREATE TABLE `orderList` (
+   `oNo`       INT      NOT NULL, -- 주문번호
+   `memberID`  varchar(100)  NOT NULL, -- 회원 아이디
+   `bNo`       INT      NOT NULL, -- 장바구니 번호
+   `orderDate` varchar(100) NOT NULL, -- 주문날짜
+   `address`   varchar(100)  NOT NULL, -- 배송지
+   `requests`  varchar(100)  NULL      -- 요구사항
+);
+
+-- 주문
+ALTER TABLE `orderList`
+   ADD CONSTRAINT `PK_orderList` -- 주문 기본키
+      PRIMARY KEY (
+         `oNo` -- 주문번호
+      );
+
+-- 제품
+CREATE TABLE `product` (
+   `pNo`           INT     NOT NULL, -- 제품번호
+   `pName`         varchar(100) NOT NULL, -- 제품제목
+   `category`      varchar(100) NOT NULL, -- 분야
+   `pPrice`        INT     NOT NULL, -- 정가
+   `discount`      INT     NOT NULL, -- 할인율
+   `writer`        varchar(100) NOT NULL, -- 작가
+   `publishing`    varchar(100) NOT NULL, -- 출판사
+   `imageFileURL`  varchar(100) NOT NULL, -- 이미지URL
+   `bDate`         varchar(100) NOT NULL, -- 출판일
+   `detailContent` varchar(100) NULL,     -- 상세내용
+   `exp`           boolean NOT NULL  -- 노출여부
+);
+
+-- 제품
+ALTER TABLE `product`
+   ADD CONSTRAINT `PK_product` -- 제품 기본키
+      PRIMARY KEY (
+         `pNo` -- 제품번호
+      );
+
+ALTER TABLE `product`
+   MODIFY COLUMN `pNo` INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `product`
+   AUTO_INCREMENT = 1;
+
+-- 회원
+CREATE TABLE `member` (
+   `memberID`   varchar(100)     NOT NULL, -- 회원 아이디
+   `memberPW`   varchar(100)     NOT NULL, -- 회원 비밀번호
+   `name`       varchar(100)     NOT NULL, -- 이름
+   `gender`     varchar(100)     NOT NULL, -- 성별
+   `birth`      varchar(100)     NOT NULL, -- 생년월일
+   `enrolldate` varchar(100)     NOT NULL, -- 가입일
+   `phone`      varchar(100)     NOT NULL, -- 전화번호
+   `email`      varchar(100)     NOT NULL, -- 이메일
+   `favorite`   varchar(100)     NULL,     -- 선호장르
+   `address`    varchar(100)     NOT NULL  -- 가입 주소
+);
+
+-- 회원
+ALTER TABLE `member`
+   ADD CONSTRAINT `PK_member` -- 회원 기본키
+      PRIMARY KEY (
+         `memberID` -- 회원 아이디
+      );
+
+-- 후기
+CREATE TABLE `review` (
+   `rNo`       INT          NOT NULL, -- 후기 번호
+   `pNo`       INT          NOT NULL, -- 제품번호
+   `memberID`  varchar(100) NOT NULL, -- 회원 아이디
+   `rTitle`    varchar(100) NOT NULL, -- 후기 제목
+   `rContents` varchar(100) NOT NULL, -- 후기 내용
+   `rDate`     varchar(100) NOT NULL, -- 후기 작성날짜
+   `rating`    double       NOT NULL, -- 별점
+   `rCnt`      INT          NOT NULL  -- 추천수
+);
+
+-- 후기
+ALTER TABLE `review`
+   ADD CONSTRAINT `PK_review` -- 후기 기본키
+      PRIMARY KEY (
+         `rNo` -- 후기 번호
+      );
+
+ALTER TABLE `review`
+   MODIFY COLUMN `rNo` INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `review`
+   AUTO_INCREMENT = 1;
+
+-- 장바구니
+CREATE TABLE `cart` (
+   `bNo`      INT      NOT NULL, -- 장바구니 번호
+   `memberID` varchar(100)  NOT NULL, -- 회원 아이디
+   `pNo`      INT      NOT NULL, -- 제품번호
+   `quantity` INT      NOT NULL, -- 수량
+   `price`    INT      NOT NULL, -- 정가
+   `dPrice`   INT      NOT NULL, -- 할인가
+   `pDate`    varchar(100) NOT NULL  -- 장바구니 날짜
+);
+
+-- 장바구니
+ALTER TABLE `cart`
+   ADD CONSTRAINT `PK_cart` -- 장바구니 기본키
+      PRIMARY KEY (
+         `bNo` -- 장바구니 번호
+      );
+
+ALTER TABLE `cart`
+   MODIFY COLUMN `bNo` INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `cart`
+   AUTO_INCREMENT = 1;
+
+
+
+-- QnA
+CREATE TABLE `QnA` (
+   `qNo`        INT      NOT NULL, -- 문의 번호
+   `memberID`   varchar(100)  NOT NULL, -- 회원 아이디
+   `qContents`  varchar(100)  NOT NULL, -- 문의 내용
+   `qTitle`     varchar(100)  NOT NULL, -- 문의 제목
+   `qDate`      varchar(100)  NOT NULL, -- 문의 작성날짜
+   `answer`     varchar(100)  NULL,     -- 답변
+   `answerDate` varchar(100) NULL,     -- 답변 작성날짜
+   `views`      INT      NOT NULL  -- 조회수
+);
+
+-- QnA
+ALTER TABLE `QnA`
+   ADD CONSTRAINT `PK_QnA` -- QnA 기본키
+      PRIMARY KEY (
+         `qNo` -- 문의 번호
+      );
+
+ALTER TABLE `QnA`
+   MODIFY COLUMN `qNo` INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `QnA`
+   AUTO_INCREMENT = 1;
+
+
+
+-- 주문상세
+CREATE TABLE `oDetail` (
+   `oNo`      INT     NOT NULL, -- 주문번호
+   `dpNo`     INT     NOT NULL, -- 주문상세번호
+   `pNo`      INT     NOT NULL, -- 제품번호
+   `dPrice`   varchar(100) NOT NULL, -- 할인가
+   `quantity` INT     NOT NULL, -- 수량
+   `total`    varchar(100) NOT NULL  -- 가격
+);
+
+-- 주문상세
+ALTER TABLE `oDetail`
+   ADD CONSTRAINT `PK_oDetail` -- 주문상세 기본키
+      PRIMARY KEY (
+         `oNo`,  -- 주문번호
+         `dpNo`  -- 주문상세번호
+      );
+
+-- 배송지 목록
+CREATE TABLE `addressList` (
+   `aNo`      INT     NOT NULL, -- 일련번호
+   `memberID` varchar(100) NOT NULL, -- 회원 아이디
+   `wAddress` varchar(100) NOT NULL  -- 배송 희망주소
+);
+
+-- 배송지 목록
+ALTER TABLE `addressList`
+   ADD CONSTRAINT `PK_addressList` -- 배송지 목록 기본키
+      PRIMARY KEY (
+         `aNo` -- 일련번호
+      );
+
+ALTER TABLE `addressList`
+   MODIFY COLUMN `aNo` INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `addressList`
+   AUTO_INCREMENT = 1;
+
+
+-- 주문
+ALTER TABLE `orderList`
+   ADD CONSTRAINT `FK_member_TO_orderList` -- 회원 -> 주문
+      FOREIGN KEY (
+         `memberID` -- 회원 아이디
+      )
+      REFERENCES `member` ( -- 회원
+         `memberID` -- 회원 아이디
+      );
+
+-- 주문
+ALTER TABLE `orderList`
+   ADD CONSTRAINT `FK_cart_TO_orderList` -- 장바구니 -> 주문
+      FOREIGN KEY (
+         `bNo` -- 장바구니 번호
+      )
+      REFERENCES `cart` ( -- 장바구니
+         `bNo` -- 장바구니 번호
+      );
+
+-- 후기
+ALTER TABLE `review`
+   ADD CONSTRAINT `FK_product_TO_review` -- 제품 -> 후기
+      FOREIGN KEY (
+         `pNo` -- 제품번호
+      )
+      REFERENCES `product` ( -- 제품
+         `pNo` -- 제품번호
+      );
+
+-- 후기
+ALTER TABLE `review`
+   ADD CONSTRAINT `FK_member_TO_review` -- 회원 -> 후기
+      FOREIGN KEY (
+         `memberID` -- 회원 아이디
+      )
+      REFERENCES `member` ( -- 회원
+         `memberID` -- 회원 아이디
+      );
+
+-- 장바구니
+ALTER TABLE `cart`
+   ADD CONSTRAINT `FK_member_TO_cart` -- 회원 -> 장바구니
+      FOREIGN KEY (
+         `memberID` -- 회원 아이디
+      )
+      REFERENCES `member` ( -- 회원
+         `memberID` -- 회원 아이디
+      );
+
+-- 장바구니
+ALTER TABLE `cart`
+   ADD CONSTRAINT `FK_product_TO_cart` -- 제품 -> 장바구니
+      FOREIGN KEY (
+         `pNo` -- 제품번호
+      )
+      REFERENCES `product` ( -- 제품
+         `pNo` -- 제품번호
+      );
+
+
+
+-- QnA
+ALTER TABLE `QnA`
+   ADD CONSTRAINT `FK_member_TO_QnA` -- 회원 -> QnA
+      FOREIGN KEY (
+         `memberID` -- 회원 아이디
+      )
+      REFERENCES `member` ( -- 회원
+         `memberID` -- 회원 아이디
+      );
+
+
+
+-- 주문상세
+ALTER TABLE `oDetail`
+   ADD CONSTRAINT `FK_orderList_TO_oDetail` -- 주문 -> 주문상세
+      FOREIGN KEY (
+         `oNo` -- 주문번호
+      )
+      REFERENCES `orderList` ( -- 주문
+         `oNo` -- 주문번호
+      );
+
+-- 배송지 목록
+ALTER TABLE `addressList`
+   ADD CONSTRAINT `FK_member_TO_addressList` -- 회원 -> 배송지 목록
+      FOREIGN KEY (
+         `memberID` -- 회원 아이디
+      )
+      REFERENCES `member` ( -- 회원
+         `memberID` -- 회원 아이디
+      );
