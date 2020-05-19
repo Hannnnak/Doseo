@@ -1,4 +1,6 @@
-package member.service;
+﻿package member.service;
+
+import java.util.Map;
 
 //p594
 //JoinRequest는 유저가 입력한 폼(joinForm.jsp)의 내용을
@@ -10,12 +12,13 @@ public class JoinRequest {
 	private String id;
 	private String password;
 	private String confirmPassword;
-	private String jname;
+	private String name;
 	private String gender;
 	private String birth;
 	private String phone;
 	private String email;
 	private String favorite;
+//	private String[] favorite;
 	private String address;
 	
 	
@@ -37,11 +40,11 @@ public class JoinRequest {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	public String getJname() {
-		return jname;
+	public String getname() {
+		return name;
 	}
-	public void setJname(String jname) {
-		this.jname = jname;
+	public void setname(String name) {
+		this.name = name;
 	}
 	public String getGender() {
 		return gender;
@@ -73,11 +76,52 @@ public class JoinRequest {
 	public void setFavorite(String favorite) {
 		this.favorite = favorite;
 	}
+
+/*	public String[] getFavorite() {
+		return favorite;
+	}
+	public void setFavorite(String[] favorite) {
+		this.favorite = favorite;
+	}
+*/	
+	
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	
+	public boolean isPasswordEqualToConfirm() {
+		// TODO Auto-generated method stub
+		return password != null && password.equals(confirmPassword);
+	}
+	
+	
+	
+	public void validate(Map<String, Boolean> errors) {
+		checkEmpty(errors, id, "id");
+		checkEmpty(errors, name, "name");
+		checkEmpty(errors, password, "password");
+		checkEmpty(errors, confirmPassword, "confirmPassword");
+		checkEmpty(errors, birth, "birth");
+		checkEmpty(errors, phone, "phone");
+		checkEmpty(errors, email, "email");
+		checkEmpty(errors, address, "address");
+		
+		if (!errors.containsKey("confirmPassword")) {
+			if (!isPasswordEqualToConfirm()) {
+				errors.put("notMatch", Boolean.TRUE);
+			}
+		}
+	}
+	
+	
+	private void checkEmpty(Map<String, Boolean> errors, 
+			String value, String fieldName) {
+		if (value == null || value.isEmpty())
+			errors.put(fieldName, Boolean.TRUE);
 	}
 
 	

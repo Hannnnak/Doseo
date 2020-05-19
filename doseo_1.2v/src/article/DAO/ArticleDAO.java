@@ -14,10 +14,33 @@ import article.MODEL.Article;
 import article.MODEL.Writer;
 import jdbc.JdbcUtil;
 
-//p634, 646, 647
+//p634, 646, 647, 665
 //article테이블과 연동하는  DAO
 public class ArticleDAO {
-
+	//p665 1
+	//글 수정
+	public int  update(Connection conn,String title,int no) 
+		throws SQLException{
+		System.out.println("글 수정 ArticleDAO-update()호출성공");
+		PreparedStatement pstmt = null;
+		try {
+			String sql=
+				"update article "+
+				 " set   title=?, moddate=NOW() "+
+				 " where article_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setInt(2, no);
+			int cnt = pstmt.executeUpdate();
+			//update성공적으로 실행되면 update된 레코드수가 리턴된다
+			//여기에서는 pk특정글번호만 update되므로 성공시에는 1이 리턴
+			return cnt;
+		}finally {
+			JdbcUtil.close(pstmt);
+		}
+	
+	}
+	
 	//P646 1
 	//전체게시물수 구하기(P646 1) pro1/guestbook.dao/MessageDAO.JAVA
 	public int selectCount(Connection conn) throws SQLException {

@@ -186,12 +186,12 @@ function closeNav() {
 			<input type="button" value="Q&A">
 		</div>
 		<div class="headerImg">
-			<a href="index.jsp" class="link_main"><img src="logo_transparent.png" height=300px width=300px/></a>
+			<a href="index.jsp" class="link_main"><img src="<%= request.getContextPath()%>/view/view_member/logo_transparent.png" height=300px width=300px/></a>
 		</div>
 		<div class="topbtn2">
-			<input type="button" value="로그인">
-			<input type="button" value="회원가입">
-			<input type="button" value="마이페이지">
+			<input type="button" value="로그인" onclick="location.href='loginForm.jsp'">
+			<input type="button" value="회원가입" onclick="location.href='joinForm.jsp'">
+			<input type="button" value="마이페이지" onclick="location.href='mypageForm.jsp'">
 			<input type="button" value="장바구니" onclick="location.href='cart.jsp'">
 		</div>
 	</div>

@@ -28,12 +28,19 @@ public class JoinService {
 			
 			//p596-22~26 추가예정~~~~~~~~~~~~~~~
 			
+			Member member = memberDao.selectById(conn, joinReq.getId());
+			if(member != null) {
+				JdbcUtil.rollback(conn);
+				throw new DuplicateIdException();
+			}
+			
+			
 			//p596-28 
 			memberDao.insert(conn,
 					new Member( joinReq.getId(), 
 							//joinReq.getName(), 
 							joinReq.getPassword(), 
-							joinReq.getJname(),
+							joinReq.getname(),
 							joinReq.getGender(),
 							joinReq.getBirth(),
 							new Date(),

@@ -141,7 +141,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="product" items="${ product }" varStatus="status">
+				<c:forEach var="product" items="${ product.content }" varStatus="status">
 					<tr>
 						<th>${ status.count }</th>
 						<td>${ product.pname }</td>

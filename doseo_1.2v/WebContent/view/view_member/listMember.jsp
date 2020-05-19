@@ -12,11 +12,11 @@
 	<a href="./index.jsp">HOME</a>
 	<hr/>
 	<h3>회원 목록 -listMember.jsp</h3>
-	<p>http://localhost/board/list.do</p>
+	<p>http://localhost/board/list.dom</p>
 	
 		<%--
 		   ArticlePage타입의  articlePage참조변수;
-		   request.setAttribute("memberPAPE", articlePage);
+		   request.setAttribute("memberPage", articlePage);
 		    모델이 넘어왔다 --%>
 	memberPAPE=${memberPAPE}	    
 	 <hr/>	    
@@ -55,29 +55,30 @@
 				<td width="auto">${member.phone}</td>
 				<td width="50">${member.email}</td>
 				<td width="auto">${member.favorite}</td>
-				<td width=""auto"">${member.address}</td>
+				<td width="auto">${member.address}</td>
 				<td width="auto">${member.regDate}</td>
+				
 		</tr>
 		</c:forEach> 
 	<%-- 페이징 부분  p653 37--%>
-	<c:if test="${memberPAPE.hasNoMembers() }">
+	<c:if test="${memberPAPE.hasMembers() }">
 		<tr>
-			<th colspan="4">
+			<th colspan="9">
 				<%-- [이전prev]출력 --%>
 				<c:if test="${memberPAPE.startPage>5}">
-				<a href="list.do?pageNo=${memberPAPE.startPage-5}">[이전]</a>
+				<a href="list.dom?pageNo=${memberPAPE.startPage-5}">[이전]</a>
 				</c:if>
 				
 				<%-- 페이지출력 [이전] [1] [2] [3] [4] [5] --%>
 				<c:forEach var="pNo" 
 				           begin="${memberPAPE.startPage}" 
 				           end="${memberPAPE.endPage}">
-				<a href="list.do?pageNo=${pNo}">[${pNo}]</a>
+				<a href="list.dom?pageNo=${pNo}">[${pNo}]</a>
 				</c:forEach>
 				
 				<%-- [다음next]출력 --%>
 				<c:if test="${memberPAPE.endPage<memberPAPE.totalPages}">
-				<a href="list.do?pageNo=${memberPAPE.startPage+5}">[다음]</a>
+				<a href="list.dom?pageNo=${memberPAPE.startPage+5}">[다음]</a>
 				</c:if>
 			</th>
 		</tr>

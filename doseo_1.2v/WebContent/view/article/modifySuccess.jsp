@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="../index.jsp">HOME</a>
+	<a href="./index.jsp">HOME</a>
 	<hr/>
 	<h3>modifySuccess.jsp(p674)</h3>
-	<p>http://localhost/board/article/modify.do</p>
+	<p>http://localhost/board/article/modify.dom</p>
 	<h3>축하합니다~~~ 수정에 성공하셨습니다</h3>
 	
 	<%--articleNumber;	//게시글번호
@@ -20,8 +20,8 @@
 		request.setAttribute("modiREQ", modiReq);
 	 --%>
 	 ${ctxPath= pageContext.request.contextPath}
-	 <a href="${ctxPath}/article/list.do">게시글목록 보기</a>
-	 <a href="${ctxPath}/article/read.do?no=${modiREQ.articleNumber}">게시글상세 보기</a>
+	 <a href="${ctxPath}/article/list.dom">게시글목록 보기</a>
+	 <a href="${ctxPath}/article/read.dom?no=${modiREQ.articleNumber}">게시글상세 보기</a>
 </body>
 </html>
 

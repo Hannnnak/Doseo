@@ -53,9 +53,9 @@
       </tfoot>
     </table>
 </c:forEach>
-		<input type="button" value="리뷰작성">
-		<input type="button" value="상품 재구매">
-		<input type="button" value="판매자문의">
+		<input type="button" value="리뷰작성" onclick="location.href='../review/newReviewForm.jsp'">
+		<input type="button" value="상품 재구매" onclick="">
+		<input type="button" value="판매자문의" onclick="location.href='../article/newArticleForm.jsp'">
 	</div>
 </div>
 </body>

@@ -78,7 +78,6 @@
 					<th>정가</th>
 					<th>할인가</th>
 					<th>수량</th>
-					<th>합계</th>
 				</tr>
 			</thead>
 			<tbody>

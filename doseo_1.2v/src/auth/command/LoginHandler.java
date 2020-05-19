@@ -91,19 +91,28 @@ public class LoginHandler implements CommandHandler {
 		try {
 			User user = loginService.login(id,password);
 			// new User(member.getId(), member.getName())
+			System.out.println(id);
+			System.out.println(password);
+			if(id.equals("admin")) {
+				System.out.println("1번");
+				HttpSession session = request.getSession();
+				session.setAttribute("AUTHUSER2", user);
+			}else {
+				
 			
 			//로그인한 회원의 정보를 세션에 저장
 			//형식> session.setAttribute(String name,Obejct value);
+				System.out.println("2번");
 			HttpSession session = request.getSession();
 			session.setAttribute("AUTHUSER", user);
-			
-			System.out.println("세션="+user);
 			/*
 			new User(member.getId(), member.getName())	
 
 			session.setAttribute("AUTHUSER_ID", user.getId());
 			session.setAttribute("AUTHUSER_NAME", user.getName());
 			*/
+			}
+
 			
 			//4.View
 			//로그인성공시   index.jsp문서로 sendRedirect를 이용하여 강제이동

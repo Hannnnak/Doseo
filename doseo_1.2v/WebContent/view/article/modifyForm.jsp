@@ -8,15 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="../index.jsp">HOME</a>
+	<a href="./index.jsp">HOME</a>
 	<hr/>
 	<h3>글수정 폼 modifyForm.jsp(p674)</h3>
-	<p>http://localhost/board/article/modify.do</p>
+	<p>http://localhost/board/article/modify.dom</p>
 	
 	<%--request.setAttribute("modiREQ", modiReq); --%>
 	
 	<form name="modifyFrm" id="modifyFrm" 
-				method="POST" action="modify.do">
+				method="POST" action="modify.dom">
 		<p>
 		 글번호 : ${modiREQ.articleNumber}<br/>
 		 <input type="hidden" name="no" 

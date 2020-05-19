@@ -26,8 +26,8 @@
 
 	<a href="./index.jsp">HOME</a>
 	<hr/>
-	<h3>loginForm.jsp</h3>
-	<p>http://localhost/doseo/login.do</p>
+	<h3>loginForm.jsp(p608)</h3>
+	<p>http://localhost/board/login.do</p>
 	
 	<form name="loginFrm" id="loginFrm" 
 			  action="login.dom" method="POST">
